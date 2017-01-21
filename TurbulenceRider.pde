@@ -7,6 +7,7 @@ void setup() {
   size( 1000, 1000); // creates a window that is 1000x1000
   //fullScreen();  // this is fullscreen mode.
   player = new Player();
+  audioPlayer = new Audio();
   audioPlayer.setup();
   
 }

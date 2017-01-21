@@ -10,7 +10,7 @@ class Audio {
 
     // we pass this to Minim so that it can load files from the data directory
     minim = new Minim(this);
-    musicName = "";
+    musicName = "https://www.youtube.com/watch?v=2lTB1pIg1y0";
     // loadFile will look in all the same places as loadImage does.
     // this means you can find files that are in the data folder and the 
     // sketch folder. you can also pass an absolute path, or a URL.
