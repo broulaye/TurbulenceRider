@@ -14,12 +14,13 @@ class Audio {
     // loadFile will look in all the same places as loadImage does.
     // this means you can find files that are in the data folder and the 
     // sketch folder. you can also pass an absolute path, or a URL.
+    //player = minim.loadFile(dataPath(musicName));
     player = minim.loadFile(musicName);
   }
   
   void draw()
   {
-    background(0);
+    //background(0);
     stroke(255);
     
     // draw the waveforms
