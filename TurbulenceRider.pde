@@ -20,3 +20,7 @@ void draw() {
   player.draw();
   audioPlayer.draw();
 }
+
+void keyPressed() {
+  audioPlayer.keyPressed();
+}
