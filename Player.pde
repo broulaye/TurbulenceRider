@@ -4,25 +4,39 @@
 // to each class.
 class Player {
   PVector pos;
+  int stepSize;
+  int size;
   
   public Player() {
     pos = new PVector();
+    pos.x = 50;
+    pos.y = height / 2;
+    stepSize = 10;
+    size = 100;
   }
   
   public void draw() {
     updateMovement();
+    checkCollision();
     // this is the current character, need to make a real one.
-    ellipse(20, pos.y, 10, 10);
+    ellipse(pos.x, pos.y, size, size);
   }
   
   private void updateMovement() {
     if (keyPressed) {
       if (key == 'w') {
-        pos.y--;
+        pos.y -= stepSize;
       }
       else if (key == 's') {
-        pos.y++;
+        pos.y += stepSize;
       }
     }
+  }
+  
+  private void checkCollision() {
+    if (pos.y < 0)
+      pos.y = 0;
+    else if (pos.y > height)
+      pos.y = height;
   }
 }
