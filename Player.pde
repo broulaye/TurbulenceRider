@@ -25,7 +25,7 @@ class Player {
     checkCollision();
     // this is the current character, need to make a real one.
     //ellipse(pos.x, pos.y, size, size);
-    image(img, pos.x, pos.y);
+    image(img, pos.x, pos.y, 200, 200);
   }
   
   private void updateMovement() {
