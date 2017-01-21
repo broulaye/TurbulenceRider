@@ -6,6 +6,7 @@ class Audio {
   String musicName;
   int top, distance, current, current1, current2, amp;
   float[] track;
+  float lastPow;
   
   // this function is run before other function by processing.
   void setup(PApplet parent) {
@@ -24,6 +25,7 @@ class Audio {
     track = new float[width]; // this is the boarderline, length of the width.
     current = 0; // the position where new data is added.
     amp = 1000; // the amplification of the signal.
+    lastPow = 0; // the previous amp level
     println("player buffer size: " + player.bufferSize());
   }
   
@@ -48,7 +50,13 @@ class Audio {
       
     //}
     
-    track[current] = top + player.left.get(1000) * amp;
+    if (frameCount % 5 == 0) {
+      track[current] = top + player.left.get(1000) * amp;
+      lastPow = track[current];
+    }
+    else {
+      track[current] = lastPow;
+    }
     for (int i = 0; i < track.length; i++) {
       current1 = (current + 1 + i)%width; // this can be optimized.
       current2 = (current1 + 1) % width;
