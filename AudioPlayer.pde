@@ -6,11 +6,11 @@ class Audio {
   String musicName;
   
   // this function is run before other function by processing.
-  void setup() {
+  void setup(PApplet parent) {
 
     // we pass this to Minim so that it can load files from the data directory
-    minim = new Minim(this);
-    musicName = "https://www.youtube.com/watch?v=2lTB1pIg1y0";
+    minim = new Minim(parent);
+    musicName = "DrakeOver.mp3";
     // loadFile will look in all the same places as loadImage does.
     // this means you can find files that are in the data folder and the 
     // sketch folder. you can also pass an absolute path, or a URL.
