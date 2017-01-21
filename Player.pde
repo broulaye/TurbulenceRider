@@ -2,13 +2,18 @@
 // classes are not separate from the main file so
 // the scope of the global variables will be available
 // to each class.
+
 class Player {
   PVector pos;
+  PImage img;
   int stepSize;
   int size;
   
   public Player() {
     pos = new PVector();
+    // quick cropping, add the animation later.
+    PImage tmp = loadImage("spritesheetvolt_run.png");
+    img = tmp.get(0, 0, tmp.width / 5, tmp.height / 2);
     pos.x = 50;
     pos.y = height / 2;
     stepSize = 10;
@@ -19,7 +24,8 @@ class Player {
     updateMovement();
     checkCollision();
     // this is the current character, need to make a real one.
-    ellipse(pos.x, pos.y, size, size);
+    //ellipse(pos.x, pos.y, size, size);
+    image(img, pos.x, pos.y);
   }
   
   private void updateMovement() {
