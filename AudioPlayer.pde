@@ -20,7 +20,7 @@ class Audio {
   
   void draw()
   {
-    background(0);
+    //background(0);
     stroke(255);
     
     // draw the waveforms

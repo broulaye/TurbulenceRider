@@ -18,8 +18,8 @@ void draw() {
   // update the background
   background(124);
   // draw the player
-  player.draw();
   audioPlayer.draw();
+  player.draw();
 }
 
 void keyPressed() {
