@@ -16,10 +16,16 @@ void setup() {
 // should be synced with framerate variable.
 void draw() {
   // update the background
-  background(124);
+  
   // draw the player
-  audioPlayer.draw();
-  player.draw();
+  if(audioPlayer.player.isPlaying()) {
+    background(124);
+    audioPlayer.draw();
+    player.draw();
+  }
+  
+
+  
 }
 
 void keyPressed() {

@@ -58,12 +58,12 @@ class Audio {
       track[current] = lastPow;
     }
     for (int i = 0; i < track.length; i++) {
-      current1 = (current + 1 + i)%width; // this can be optimized.
-      current2 = (current1 + 1) % width;
-      line(i, track[current1], i + 1, track[current2]);
-      line(i, distance + track[current1], i + 1, distance + track[current2]);
+      current1 = (current + 20 + i)%width; // this can be optimized.
+      current2 = (current1 + 20) % width;
+      line(i, track[current1], i + 20, track[current2]);
+      line(i, distance + track[current1], i + 20, distance + track[current2]);
     }
-    current = (current + 1) % width; // make the array as circular loop.
+    current = (current + 20) % width; // make the array as circular loop.
     
     // draw a line to show where in the song playback is currently located
     //float posx = map(player.position(), 0, player.length(), 0, width);
