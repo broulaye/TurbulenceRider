@@ -8,6 +8,7 @@ class Player {
   PImage img;
   int stepSize;
   int size;
+  boolean isAlive;
   
   public Player() {
     pos = new PVector();
@@ -18,14 +19,15 @@ class Player {
     pos.y = height / 2;
     stepSize = 10;
     size = 100;
+    isAlive = true;
   }
   
   public void draw() {
     updateMovement();
     checkCollision();
     // this is the current character, need to make a real one.
-    //ellipse(pos.x, pos.y, size, size);
-    image(img, pos.x, pos.y, 200, 200);
+    ellipse(pos.x, pos.y, size, size);
+    //image(img, pos.x, pos.y, 200, 200);
   }
   
   private void updateMovement() {
@@ -44,5 +46,11 @@ class Player {
       pos.y = 0;
     else if (pos.y > height)
       pos.y = height;
+    if (pos.y < audioPlayer.track[audioPlayer.current1]) {
+      isAlive = false;
+    }
+    else if (pos.y > audioPlayer.track[audioPlayer.current1] + audioPlayer.distance) {
+      isAlive = false;
+    }
   }
 }

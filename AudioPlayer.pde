@@ -4,7 +4,7 @@ class Audio {
   Minim minim;
   AudioPlayer player;
   String musicName;
-  int top, distance, current, current1, current2, amp, strokeColor;
+  int top, distance, current, current1, current2, amp, strokeColor, step, x1, x2;
   float[] track;
   float lastPow;
   
@@ -20,9 +20,12 @@ class Audio {
     //player = minim.loadFile(dataPath(musicName));
     player = minim.loadFile(musicName);
     
-    distance = height / 4; // distance between the two boarderlines.
+    distance = height / 2; // distance between the two boarderlines.
     top = (height / 2) - (distance / 2);
-    track = new float[width]; // this is the boarderline, length of the width.
+    step = 2;
+    track = new float[width / step]; // this is the boarderline, length of the width.
+    for (int i = 0; i < track.length; i++)
+      track[i] = top;  // initialize the array
     current = 0; // the position where new data is added.
     amp = 1000; // the amplification of the signal.
     lastPow = 0; // the previous amp level
@@ -60,12 +63,14 @@ class Audio {
       track[current] = lastPow;
     }
     for (int i = 0; i < track.length; i++) {
-      current1 = (current + 20 + i)%width; // this can be optimized.
-      current2 = (current1 + 20) % width;
-      line(i, track[current1], i + 20, track[current2]);
-      line(i, distance + track[current1], i + 20, distance + track[current2]);
+      current1 = (current + 1 + i) % track.length; // this can be optimized.
+      current2 = (current1 + 1) % track.length;
+      x1 = i * step;
+      x2 = (i + 1) * step;
+      line(x1, track[current1], x2, track[current2]);
+      line(x1, distance + track[current1], x2, distance + track[current2]);
     }
-    current = (current + 20) % width; // make the array as circular loop.
+    current = (current + 20) % track.length; // make the array as circular loop.
     
     // draw a line to show where in the song playback is currently located
     //float posx = map(player.position(), 0, player.length(), 0, width);
