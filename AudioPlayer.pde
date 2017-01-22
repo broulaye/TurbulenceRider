@@ -22,7 +22,7 @@ class Audio {
     
     distance = height / 2; // distance between the two boarderlines.
     top = (height / 2) - (distance / 2);
-    step = 2;
+    step = 15;
     track = new float[width / step]; // this is the boarderline, length of the width.
     for (int i = 0; i < track.length; i++)
       track[i] = top;  // initialize the array
@@ -70,7 +70,7 @@ class Audio {
       line(x1, track[current1], x2, track[current2]);
       line(x1, distance + track[current1], x2, distance + track[current2]);
     }
-    current = (current + 20) % track.length; // make the array as circular loop.
+    current = (current + 1) % track.length; // make the array as circular loop.
     
     // draw a line to show where in the song playback is currently located
     //float posx = map(player.position(), 0, player.length(), 0, width);
