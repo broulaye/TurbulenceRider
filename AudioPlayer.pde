@@ -4,7 +4,7 @@ class Audio {
   Minim minim;
   AudioPlayer player;
   String musicName;
-  int top, distance, current, current1, current2, amp;
+  int top, distance, current, current1, current2, amp, strokeColor;
   float[] track;
   float lastPow;
   
@@ -26,6 +26,7 @@ class Audio {
     current = 0; // the position where new data is added.
     amp = 1000; // the amplification of the signal.
     lastPow = 0; // the previous amp level
+    strokeColor = 255;
     println("player buffer size: " + player.bufferSize());
   }
   
@@ -34,7 +35,8 @@ class Audio {
     //background(0);
     
     // setup the lines
-    stroke(255);
+    stroke(strokeColor);
+    //stroke(map(player.left.get(1000), -1, 1, 0, 255));
     strokeWeight(10);    
     
     // draw the waveforms

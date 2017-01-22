@@ -19,7 +19,8 @@ void draw() {
   
   // draw the player
   if(audioPlayer.player.isPlaying()) {
-    background(124);
+    //background(124);
+    background(map(audioPlayer.player.left.get(1000), -1, 1, 0, 255));
     audioPlayer.draw();
     player.draw();
   }
